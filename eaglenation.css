@@ -1,0 +1,215 @@
+html {
+	margin: 0px;
+	padding: 0px;
+}
+#logo {
+	float: left;
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-right: 0px;
+}
+h1 {
+	font-family: 'bebas', Helvetica, sans-serif;
+	font-weight: 1200;
+	font-size: 260px;
+	color: white;
+	margin: 0px;
+	padding:0px;
+	text-align: center;
+	text-stroke-color: white;
+}
+h2 {
+	font-family: 'bebas', serif;
+	font-weight: 500;
+	font-size: 30px;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	padding-left: 200px;
+	background-color: white;
+	padding-bottom: 5px;
+}
+h1,h2, #logo {
+	position: relative;
+	z-index: 2;
+}
+h3 {
+	font-family: 'toboga';
+	color: rgba(119, 73, 148, 1);
+	margin-left: 250px;
+	font-size: 70px;
+	margin-bottom: 0px;
+}
+p {
+	font-family: 'bebas';
+	color: black;
+	font-size: 24px;
+	width: 900px;
+	text-align: justify;
+	position-x: center;
+	margin: auto;
+	padding: 20px;
+}
+head {
+	margin: 0px;
+	padding: 0px;
+}
+main {
+	z-index: 4;
+	position: relative;
+	background-image: url('images/trophy_grab.jpg');
+	background-size: cover;
+	height: 1000px;
+	
+}
+header {
+	background-image: url('images/boys_bite.jpg');
+	background-size: 130%;
+	background-position: 0px -200px;
+	background-attachment: scroll;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	overflow: hidden;
+	height: 400px;
+}
+header::before {
+	content: '';
+	position: absolute;
+	top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+	background-color: rgba(119, 73, 148,0);
+	transition: background-color 0.5s ease;
+	z-index: 1;
+}
+header:hover::before {
+	background-color: rgba(119, 73, 148, 0.5);
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+	font-size: 25px;
+	font-family: 'bebas';
+	background: black;
+	text-decoration: none;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+.mainlinks {
+	position: relative;
+	margin: 0px, 15px;
+}
+.content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+.navbar a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	width: 100px;
+	padding: 10px;
+}
+.mainlinks:hover .content {
+	display:block;
+}
+.link {
+	background: rgb(119, 73, 148);
+	color: black;
+}
+.link:hover {
+	background: black;
+	color: rgb(119, 73, 148);
+}
+.dropbutton {
+	width: 70px;
+	padding: 10px;
+	margin: 0px;
+	background: black;
+	color: rgb(119, 73, 148);
+}
+.dropbutton:hover {
+	background: rgb(119, 73, 148);
+	color: black;
+}
+#desc {
+	background: rgba(119, 73, 148, 0);
+}
+#description {
+	opacity: 0;
+}
+#aboutus {
+	margin-top: 100px;
+}
+#insta {
+	float: left;
+	margin-left: 100px;
+}
+#face {
+	float: right;
+	margin-right: 100px;
+}
+#face, #insta {
+	background: white;
+	border: 20px, white, solid;
+	border-radius: 50px;
+	width: 30vw;
+	position: relative;
+}
+.socialtext {
+	display: inline;
+	font-size: 300%;
+	padding: 0px;
+	margin-left: 10px;
+}
+h4 {
+	font-family: 'bebas';
+	font-size: 100px;
+	color: black;
+	position: fixed;
+	right: 17vw;
+	margin: 0px;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+footer {
+	background: rgb(119, 73, 148);
+}
+@font-face {
+  font-family: 'bebas';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/bebas.woff') format('woff');
+}
+@font-face {
+  font-family: 'circus';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/circus.woff') format('woff');
+}
+@font-face {
+  font-family: 'federal';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/federal.woff') format('woff');
+}
+@font-face {
+  font-family: 'legal';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/legal.woff') format('woff');
+}
+@font-face {
+  font-family: 'toboga';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/toboga.woff') format('woff');
+}
