@@ -9,14 +9,44 @@ html {
 	margin-right: 0px;
 }
 h1 {
-	font-family: 'bebas', Helvetica, sans-serif;
-	font-weight: 1200;
-	font-size: 260px;
-	color: white;
-	margin: 0px;
-	padding:0px;
-	text-align: center;
-	text-stroke-color: white;
+    font-family: 'bebas', Helvetica, sans-serif;
+    font-weight: 1200;
+    font-size: 10em;
+    color: white;
+    margin: 0px;
+    padding:0px;
+    text-align: center;
+    text-stroke-color: white;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 5em;
+        white-space: normal;
+        line-height: 1.2;
+        word-break: keep-all;
+    }
+    
+    header {
+        height: auto;
+        background-position: center;
+        background-size: cover;
+    }
+    
+    h2 {
+        padding-left: 20px;
+        font-size: 24px;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
+    }
+    
+    .navbar a, .dropbutton {
+        width: auto;
+        padding: 8px 5px;
+    }
 }
 h2 {
 	font-family: 'bebas', serif;
