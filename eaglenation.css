@@ -28,7 +28,7 @@ h1 {
 }
 @media only screen and (max-width: 768px) {
     h1 {
-        font-size: 2em; /* Smaller size for better fit */
+        font-size: 5em; /* Smaller size for better fit */
         white-space: normal;
         line-height: 1.2;
         padding: 0 15px; /* Adds side padding */
