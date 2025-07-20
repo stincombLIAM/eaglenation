@@ -28,7 +28,7 @@ h1 {
 }
 @media only screen and (max-width: 768px) {
     h1 {
-        font-size: 3.5em; /* Smaller size for better fit */
+        font-size: 2em; /* Smaller size for better fit */
         white-space: normal;
         line-height: 1.2;
         padding: 0 15px; /* Adds side padding */
@@ -53,8 +53,8 @@ h1 {
     
     .navbar a, .dropbutton {
         width: auto;
-        padding: 8px 5px;
-        font-size: 0.9em; /* Smaller text */
+        padding: 6px 3px;
+        font-size: 0.6em; /* Smaller text */
     }
     
     /* Fix for your content sections */
@@ -63,7 +63,9 @@ h1 {
         padding: 0 15px;
         box-sizing: border-box;
     }
-    
+    .mainlinks {
+	margin: 0px, 4px;
+    }
     p {
         width: 100%;
         box-sizing: border-box;
@@ -76,6 +78,7 @@ h1 {
         margin: 10px 0;
         box-sizing: border-box;
     }
+
 }
 h2 {
 	font-family: 'bebas', serif;
