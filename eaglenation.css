@@ -168,11 +168,14 @@ header:hover::before {
 	padding: 0px;
 	margin-left: 10px;
 }
+#time {
+	text-align: center;
+	
+}
 h4 {
 	font-family: 'bebas';
 	font-size: 80px;
 	color: black;
-	text-align: center;
 	margin: auto;
 }
 body {
