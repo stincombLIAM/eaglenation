@@ -20,7 +20,7 @@ h1 {
     font-weight: 1200;
 	position: sticky;
     font-size: 260px;
-    color: white;
+    color: blue;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -31,6 +31,7 @@ h1 {
     h1 {
         font-size: 5em; /* Smaller size for better fit */
         white-space: normal;
+	color: red;
         line-height: 1.2;
         padding: 0 15px; /* Adds side padding */
     }
