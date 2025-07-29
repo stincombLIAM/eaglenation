@@ -50,7 +50,6 @@ h1 {
     .navbar {
         flex-wrap: wrap;
         justify-content: space-around; /* Better spacing */
-	    position: sticky;
     }
     
     .navbar a, .dropbutton {
