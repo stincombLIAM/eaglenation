@@ -103,6 +103,10 @@ h3 {
 	font-size: 70px;
 	margin-bottom: 0px;
 }
+#sporttitle {
+	background: black;
+	margin-top: 0px;
+}
 p {
 	font-family: 'bebas';
 	color: black;
