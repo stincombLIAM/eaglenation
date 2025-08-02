@@ -9,22 +9,78 @@ html {
 	margin-right: 0px;
 }
 html, body {
-	width: 100%;
-	overflow-x: hidden;
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-	font-family: 'bebas', Helvetica, sans-serif;
-	font-weight: 1200;
-	font-size: 260px;
-	color: white;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	text-stroke-color: white;
-	white-space: nowrap;
+    font-family: 'bebas', Helvetica, sans-serif;
+    font-weight: 1200;
+	position: sticky;
+    font-size: 260px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-stroke-color: white;
+    white-space: nowrap;
+}
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 5em; /* Smaller size for better fit */
+        white-space: normal;
+        line-height: 1.2;
+        padding: 0 15px; /* Adds side padding */
+    }
+    
+    header {
+        height: auto;
+        background-position: center;
+        background-size: cover;
+        padding: 20px 0; /* Adds vertical padding */
+    }
+    
+    h2 {
+        padding-left: 15px;
+        font-size: 1.5em;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-around; /* Better spacing */
+	    position: sticky;
+    }
+    
+    .navbar a, .dropbutton {
+        width: auto;
+        padding: 6px 3px;
+        font-size: 0.6em; /* Smaller text */
+    }
+    
+    /* Fix for your content sections */
+    main {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    .mainlinks {
+	margin: 0px, 4px;
+    }
+    p {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 15px;
+    }
+    
+    #insta, #face {
+        float: none;
+        width: 100%;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
 }
 h2 {
 	font-family: 'bebas', serif;
@@ -91,10 +147,10 @@ header {
 header::before {
 	content: '';
 	position: absolute;
-	top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
+	top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
 	background-color: rgba(119, 73, 148,0);
 	transition: background-color 0.5s ease;
 	z-index: 1;
@@ -103,31 +159,32 @@ header:hover::before {
 	background-color: rgba(119, 73, 148, 0.5);
 }
 .navbar {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
 	font-size: 25px;
 	font-family: 'bebas';
 	background: black;
 	text-decoration: none;
 	position: sticky;
 	top: 0;
-	z-index: 999;
+	z-index: 1;
 }
 .mainlinks {
 	position: relative;
-	margin: 0px 15px;
+	margin: 0px, 15px;
 }
 .content {
 	display: none;
 	position: absolute;
 	z-index: 1;
-	min-width: 100px;
 }
 .navbar a {
+	display: block;
 	text-decoration: none;
 	text-align: center;
+	width: 100px;
 	padding: 10px;
 }
 .mainlinks:hover .content {
@@ -136,19 +193,17 @@ header:hover::before {
 .link {
 	background: rgb(119, 73, 148);
 	color: black;
-	display: block;
 }
 .link:hover {
 	background: black;
 	color: rgb(119, 73, 148);
 }
 .dropbutton {
-	width: 100px;
+	width: 70px;
 	padding: 10px;
 	margin: 0px;
 	background: black;
 	color: rgb(119, 73, 148);
-	display: block;
 }
 .dropbutton:hover {
 	background: rgb(119, 73, 148);
@@ -163,17 +218,6 @@ header:hover::before {
 #aboutus {
 	margin-top: 100px;
 }
-#insta, #face {
-	background: white;
-	border: 20px, white, solid;
-	border-radius: 50px;
-	width: 30vw;
-	position: relative;
-	text-decoration: none;
-	display: inline-flex;
-	align-items: center;
-	box-sizing: border-box;
-}
 #insta {
 	float: left;
 	margin-left: 100px;
@@ -182,8 +226,14 @@ header:hover::before {
 	float: right;
 	margin-right: 100px;
 }
+#face, #insta {
+	background: white;
+	border: 20px, white, solid;
+	border-radius: 50px;
+	width: 30vw;
+	position: relative;
+}
 .socialtext {
-	font-family: 'bebas';
 	display: inline;
 	font-size: 300%;
 	padding: 0px;
@@ -207,32 +257,32 @@ footer {
 	background: rgb(119, 73, 148);
 }
 @font-face {
-  font-family: 'bebas';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/bebas.woff') format('woff');
+  font-family: 'bebas';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/bebas.woff') format('woff');
 }
 @font-face {
-  font-family: 'circus';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/circus.woff') format('woff');
+  font-family: 'circus';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/circus.woff') format('woff');
 }
 @font-face {
-  font-family: 'federal';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/federal.woff') format('woff');
+  font-family: 'federal';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/federal.woff') format('woff');
 }
 @font-face {
-  font-family: 'legal';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/legal.woff') format('woff');
+  font-family: 'legal';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/legal.woff') format('woff');
 }
 @font-face {
-  font-family: 'toboga';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/toboga.woff') format('woff');
+  font-family: 'toboga';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/toboga.woff') format('woff');
 }
