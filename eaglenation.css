@@ -10,7 +10,7 @@ html {
 }
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     margin: 0;
     padding: 0;
 }
@@ -139,7 +139,7 @@ header {
 	margin: 0px;
 	padding: 0px;
 	position: relative;
-	overflow: hidden;
+	/* overflow: hidden; */
 	height: 400px;
 }
 header::before {
