@@ -64,7 +64,7 @@ h1 {
         box-sizing: border-box;
     }
     .mainlinks {
-	margin: 0px, 4px;
+	margin: 0px 4px;
     }
     p {
         width: 100%;
@@ -171,7 +171,7 @@ header:hover::before {
 }
 .mainlinks {
 	position: relative;
-	margin: 0px, 15px;
+	margin: 0px 15px;
 }
 .content {
 	display: none;
