@@ -4,8 +4,6 @@ window.addEventListener('scroll', function() {
     const title2 = document.getElementById('titlebar2');
 	const description = document.getElementById('description');
 	const desc = document.getElementById('desc');
-	const insta = document.getElementById('insta');
-	const face = document.getElementById('face');
 	let opacity = 0;
 	let opacity2 = 0;
 
@@ -14,10 +12,6 @@ window.addEventListener('scroll', function() {
 
     header.style.height = (400 - scrollPosition/1.2) + 'px';
 	title1.style.margin = (-scrollPosition) + 'px';
-	insta.style.marginTop = 400 - (scrollPosition) + 'px';
-	insta.style.boxShadow = "0px " + ((scrollPosition - 273)/4.3) + "px black";
-	face.style.marginTop = 400 - (scrollPosition/2) + 'px';
-	face.style.boxShadow = "0px " + ((scrollPosition - 345)/5.3) + "px black";
 	header.style.backgroundPosition = (scrollPosition*(-2)) + 'px -200px';
 	if (scrollPosition > 30 && scrollPosition < 199) {
 		opacity = (scrollPosition - 30)/169;
