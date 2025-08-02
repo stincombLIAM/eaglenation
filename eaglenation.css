@@ -18,7 +18,6 @@ html, body {
 h1 {
     font-family: 'bebas', Helvetica, sans-serif;
     font-weight: 1200;
-	position: sticky;
     font-size: 260px;
     color: white;
     margin: 0;
@@ -168,7 +167,7 @@ header:hover::before {
 	text-decoration: none;
 	position: sticky;
 	top: 0;
-	z-index: 1;
+	z-index: 999;
 }
 .mainlinks {
 	position: relative;
