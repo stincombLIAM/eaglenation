@@ -50,7 +50,7 @@
             overflow: hidden;
         }
         body {
-            background: MediumPurple;
+            background: rgb(119, 73, 148);
             height: 100vh;
             margin: 0;
             display: flex;
@@ -63,7 +63,7 @@
             overflow: hidden;
         }
         
-        h1 {
+        #titlepong {
             font-family: 'Header', sans-serif;
             font-size: 100px;
             margin: 0;
@@ -134,7 +134,7 @@
 				<a href='pongpong.html' class='dropbutton'>Pong</a>
 			</div>
     <div class="game-area">
-        <h1>PONG</h1>
+        <h1 id="titlepong">PONG</h1>
         <canvas id="pong" width="800" height="400"></canvas>
     </div>
     <div class="leaderboard">    
@@ -313,14 +313,14 @@
         function playerScores() {
             document.body.style.backgroundColor = 'green';
             setTimeout(() => {
-                document.body.style.backgroundColor = 'MediumPurple';
+                document.body.style.backgroundColor = 'rgb(119, 73, 148)';
             }, 1000);
         }
 
         function botScores() {
             document.body.style.backgroundColor = 'red';
             setTimeout(() => {
-                document.body.style.backgroundColor = 'MediumPurple';
+                document.body.style.backgroundColor = 'rgb(119, 73, 148)';
             }, 1000);
         }
         
