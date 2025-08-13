@@ -5,19 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong Game</title>
     <style>
+        @font-face {
+          font-family: 'bebas';
+          font-style: normal;
+          font-weight: 400;
+          src: url('fonts/bebas.woff') format('woff');
+        }
+        
+        /* Add this to your existing body styles */
+        body {
+            flex-direction: row; /* Change from column to row */
+            align-items: flex-start; /* Align items to top */
+            padding-top: 50px; /* Add some top padding */
+        }
+        
+        /* Replace your existing .leaderboard styles */
         .leaderboard {
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            width: 300px;
+            margin-left: 30px; /* Space between canvas and leaderboard */
+            width: 250px;
+            font-family: 'bebas', sans-serif;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 0; /* Remove rounded corners */
+        }
+        
+        .leaderboard h2 {
+            font-size: 32px;
+            margin-top: 0;
             text-align: center;
         }
         
         .leaderboard ol {
             padding-left: 20px;
-            text-align: left;
-            font-size: 20px;
+            font-size: 24px;
+        }
+        
+        /* Add this to keep your canvas properly aligned */
+        #pong {
+            margin-bottom: 0; /* Remove the bottom margin */
+            margin-right: 0; /* Ensure no right margin */
         }
         body {
             background: CornflowerBlue;
@@ -64,10 +91,12 @@
     </style>
 </head>
 <body>
-    <h1>PONG</h1>
-    <canvas id="pong" width="800" height="400"></canvas>
-    <div class="leaderboard">
-        <h2>Leaderboard</h2>
+    <div class="game-area">
+        <h1>PONG</h1>
+        <canvas id="pong" width="800" height="400"></canvas>
+    </div>
+    <div class="leaderboard">    
+        <h2>LEADERBOARD</h2>
         <ol id="scores-list"></ol>
     </div>
     <script>
