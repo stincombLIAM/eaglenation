@@ -10,75 +10,105 @@
 	<link href="eaglenation.css" rel="stylesheet" type="text/css">
     <title>Pong Game</title>
     <style>
-        @font-face {
-            font-family: 'Header';
-            src: url('fonts/Franchise.woff') format('woff');
-        }
-        
-        html, body {
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-		body {
-			background: rgb(119, 73, 148);
-		}
-		
-        /* Game container */
-        .pong-container {
-            display: flex;
-            flex-direction: row;
-            height: calc(100vh - 60px); /* Account for navbar height */
-            margin-top: 60px; /* Match navbar height */
-        }
-        
-        /* Game area */
-        .game-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #titlepong {
-            font-family: 'Header', sans-serif;
-            font-size: 80px;
-            margin: 10px 0;
-            color: white;
-        }
-        
+    @font-face {
+        font-family: 'Header';
+        src: url('fonts/Franchise.woff') format('woff');
+    }
+    
+    html, body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+    
+    /* Game container */
+    .pong-container {
+        display: flex;
+        flex-direction: row;
+        height: calc(100vh - 60px); /* Account for navbar height */
+        margin-top: 60px; /* Match navbar height */
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Game area */
+    .game-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgb(119, 73, 148);
+        min-width: 0; /* Allows flex item to shrink */
+    }
+    
+    #titlepong {
+        font-family: 'Header', sans-serif;
+        font-size: 10vw; /* Responsive font size */
+        margin: 10px 0;
+        color: white;
+    }
+    
+    #pong {
+        background: white;
+        width: 90%; /* Relative width */
+        max-width: 800px; /* Maximum size */
+        height: auto; /* Maintain aspect ratio */
+        aspect-ratio: 2/1; /* Width:Height ratio */
+    }
+    
+    /* Leaderboard */
+    .leaderboard {
+        background: white;
+        padding: 20px;
+        width: 250px; /* Fixed width */
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        flex-shrink: 0; /* Prevent shrinking */
+    }
+    
+    .leaderboard h2 {
+        font-family: 'bebas', sans-serif;
+        font-size: 32px;
+        margin-top: 0;
+        text-align: center;
+    }
+    
+    .leaderboard ol {
+        padding-left: 20px;
+        font-size: 24px;
+        font-family: 'bebas', sans-serif;
+        margin: 0;
+    }
+    
+    @media (max-width: 1200px) {
         #pong {
-            background: white;
-            width: 800px;
-            height: 400px;
+            width: 85%; /* Slightly smaller on medium screens */
         }
-        
-        /* Leaderboard */
         .leaderboard {
-            background: white;
-            padding: 50px;
-            width: 250px;
-            height: 100%;
-            overflow-y: auto;
-            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+            width: 200px; /* Narrower on medium screens */
         }
-        
-        .leaderboard h2 {
-            font-family: 'bebas', sans-serif;
-            font-size: 32px;
-            margin-top: 0;
-            text-align: Left;
+    }
+    
+    @media (max-width: 900px) {
+        .pong-container {
+            flex-direction: column;
+            height: auto;
         }
-        
-        .leaderboard ol {
-            padding-left: 20px;
-			padding-right: 20px;
-            font-size: 24px;
-            font-family: 'bebas', sans-serif;
+        .leaderboard {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
         }
-    </style>
+        #pong {
+            width: 95%;
+            margin: 20px 0;
+        }
+    }
+</style>
 </head>
 <body>
     <div class='navbar'>
