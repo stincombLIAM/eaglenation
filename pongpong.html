@@ -98,6 +98,40 @@
     </style>
 </head>
 <body>
+    <div class='navbar'>
+				<a href='index.html' id="home" class='dropbutton'>Home</a>
+				<div class='mainlinks'>
+					<a class='dropbutton'>BasketBall</a>
+					<div class='content'>
+						<a href='basketball.html' class='link'>Main</a>
+						<a href='basketball.html' class='link'>Roster</a>
+						<a href='basketball.html' class='link'>Record</a>
+					</div>
+				</div>
+				<div class='mainlinks'>
+					<a class='dropbutton'>Football</a>
+					<div>
+						<div class='content'>
+							<a href='football.html' class='link'>Main</a>
+							<a href='football.html' class='link'>Roster</a>
+							<a href='football.html' class='link'>Record</a>
+						</div>
+					</div>
+				</div>
+				<div class='mainlinks'>
+					<a class='dropbutton'>Volleyball</a>
+					<div>
+						<div class='content'>
+							<a href='volleyball.html' class='link'>Main</a>
+							<a href='volleyball.html' class='link'>Roster</a>
+							<a href='volleyball.html' class='link'>Record</a>
+						</div>
+					</div>
+				</div>
+				<a href='photos.html' class='dropbutton'>Photos</a>
+				<a href='calendar.html' class='dropbutton'>Calendar</a>
+				<a href='pongpong.html' class='dropbutton'>Pong</a>
+			</div>
     <div class="game-area">
         <h1>PONG</h1>
         <canvas id="pong" width="800" height="400"></canvas>
@@ -278,14 +312,14 @@
         function playerScores() {
             document.body.style.backgroundColor = 'green';
             setTimeout(() => {
-                document.body.style.backgroundColor = 'CornflowerBlue';
+                document.body.style.backgroundColor = 'MediumPurple';
             }, 1000);
         }
 
         function botScores() {
             document.body.style.backgroundColor = 'red';
             setTimeout(() => {
-                document.body.style.backgroundColor = 'CornflowerBlue';
+                document.body.style.backgroundColor = 'MediumPurple';
             }, 1000);
         }
         
