@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+		body {
+		    background: CornflowerBlue;
+		    height: 100vh;
+		    margin: 0;
+		    display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		}
+		
+		h1 {
+		    font-family: 'Header', sans-serif;
+		    font-size: 100px;
+		    margin: 0;
+		}
+		a	{
+			font-family: 'Header', sans-serif;
+		    font-size: 30px;
+		    margin: 0;
+			color: black;
+		}
+		
+		#pong {
+		    background: white;
+		    max-width: 100%;
+		    max-height: 70vh;
+		    width: 800px;
+		    height: auto;
+			margin-bottom: 50px;
+		}
+		@font-face {
+			font-family: 'Header';
+			src: url('fonts/Franchise.woff') format('woff');
+		}
+		@font-face {
+			font-family: 'Links';
+			src: url('fonts/Franchise.woff') format('woff');
+		}
+		@font-face {
+			font-family: 'Score';
+			src: url('fonts/Franchise.woff') format('woff');
+		}
+    </style>
+</head>
+<body>
+	<h1>PONG</h1>
+    <canvas id="pong" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('pong');
+        const context = canvas.getContext('2d');
+		let ballY = 200;
+		let ballX = 200;
+		const ballRadius = 20;
+		let	ballVelocityX = Math.floor(Math.random() * (11 - 6) ) + 6; 
+		let ballVelocityY = Math.floor(Math.random() * (11 - 6) ) + 6; 
+		let aiY = 20;
+		let plY = 20;
+		let paHeight = 120;
+		let paWidth = 25;
+		let paSpeed = 8;
+		let upPressed = false;
+		let downPressed = false;
+		let plScore = 0;
+		let aiScore = 0;
+		let botCollisions = 0;
+		const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+		
+
+        function draw() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+			context.fillStyle = "LightGray";
+			context.font = "300px Header";
+			context.fillText(aiScore,120,290);
+			context.fillText(plScore,515,290);
+			
+            context.fillStyle = "black";
+			
+			context.fillRect(0,aiY,paWidth,paHeight);
+			
+			context.fillRect((800-paWidth),plY,paWidth,paHeight);
+			
+			context.beginPath();
+            context.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+            context.fill();
+        }
+
+        // Event listeners for key presses
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp') {
+                upPressed = true;
+            } else if (event.key === 'ArrowDown') {
+                downPressed = true;
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            if (event.key === 'ArrowUp') {
+                upPressed = false;
+            } else if (event.key === 'ArrowDown') {
+                downPressed = false;
+            }
+        });
+
+		
+        function update() {
+			
+			//Ball Movement
+        	ballX = ballX + ballVelocityX;
+			ballY = ballY + ballVelocityY;
+
+
+			//Floor/Ceiling-Ball Collisions
+			if ((ballY - ballRadius) < 0) {
+				ballVelocityY = -ballVelocityY;
+				ballY = 0 + ballRadius;
+				waContact();
+			} else if ((ballY + ballRadius) > 400) {
+				ballVelocityY = -ballVelocityY;
+				ballY = 400 - ballRadius;
+				waContact();
+			}
+
+			//Bot Paddle Movement
+			if (((ballY) > (aiY+(paHeight/2))) && ((aiY + paHeight) < 400) && (ballX < 400) && (ballVelocityX<0)) {
+				aiY = aiY + paSpeed;
+			} else if (((ballY) < (aiY+(paHeight/2))) && (aiY > 0) && (ballX < 400) && (ballVelocityX<0)) {
+				aiY = aiY - paSpeed;
+			}
+
+			//Ball-Paddle Collisions
+			if (((ballX-ballRadius)<(0+paWidth)) && (ballY>(aiY-10)) && (ballY<(aiY+paHeight+10))) {
+				ballVelocityX = -ballVelocityX;
+				ballVelocityX = ballVelocityX + 1;
+				botCollisions = botCollisions + 1;
+				paContact();
+			} else if (((ballX+ballRadius)>(800-paWidth)) && (ballY>(plY-10)) && (ballY<(plY+paHeight+10))) {
+				ballVelocityX = -ballVelocityX;
+				ballVelocityX = ballVelocityX - 1;
+				paContact();
+			}
+
+			
+			//Player Paddle Movement
+			if (upPressed && plY > 0) {
+                plY -= paSpeed;
+            }
+            if (downPressed && plY < canvas.height - paHeight) {
+                plY += paSpeed;
+            }
+
+			//Ball Reset
+			if ((ballX-ballRadius)<(-30)) {
+				plScore = plScore + 1;
+				playerScores();
+				ballVelocityX = (Math.floor(Math.random() * (12 - 6) ) + 6); 
+				ballVelocityY = Math.floor(Math.random() * (10 - 5) ) + 5; 
+				ballX = 400;
+				ballY = 200;
+				plGoal();
+				console.log(botCollisions + "   WIN")
+				botCollisions = 0;
+				if (plScore == 10) {
+					console.log(("\n\nYOU WIN!\n\nFINAL SCORE: " + aiScore + ":" + plScore))
+				}
+			}
+			if ((ballX+ballRadius)>(830)) {
+				aiScore = aiScore + 1;
+				botScores();
+				ballVelocityX = -(Math.floor(Math.random() * (12 - 6) ) + 6); 
+				ballVelocityY = Math.floor(Math.random() * (10 - 5) ) + 5; 
+				ballX = 400;
+				ballY = 200;
+				aiGoal();
+				console.log(botCollisions  + "   LOSS")
+				botCollisions = 0;
+				if (aiScore == 10) {
+					console.log(("\n\nYOU LOSE!\n\nFINAL SCORE: " + aiScore + ":" + plScore))
+				}
+			}
+			
+        }
+
+		function playerScores() {
+		    document.body.style.backgroundColor = 'green';
+			setTimeout(() => {
+		        document.body.style.backgroundColor = 'CornflowerBlue';
+		    }, 1000);
+		}
+
+		function botScores() {
+		    document.body.style.backgroundColor = 'red';
+			setTimeout(() => {
+		        document.body.style.backgroundColor = 'CornflowerBlue';
+		    }, 1000);
+		}
+		
+		function playSound(frequency, duration) {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+            const oscillator = audioContext.createOscillator();
+            oscillator.type = 'sine'; // Type of sound wave
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+            oscillator.connect(audioContext.destination);
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+
+        function paContact() {
+            playSound(550, 0.1); // Play for 0.1 seconds
+        }
+
+        function waContact() {
+            playSound(800, 0.03); // Play for 0.03 seconds
+        }
+
+        function plGoal() {
+            playSound(350, 1); // Play for 1 second
+        }
+
+        function aiGoal() {
+            playSound(200, 1); // Play for 1 second
+        }
+		
+        function gameLoop() {
+            draw();
+            update();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game
+        gameLoop();
+    </script>
+</body>
+</html>
