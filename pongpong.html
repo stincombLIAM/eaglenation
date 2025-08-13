@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong Game</title>
     <style>
+		.leaderboard {
+		    background: white;
+		    padding: 20px;
+		    border-radius: 10px;
+		    margin-top: 20px;
+		    width: 300px;
+		    text-align: center;
+		}
+		
+		.leaderboard ol {
+		    padding-left: 20px;
+		    text-align: left;
+		    font-size: 20px;
+		}
 		body {
 		    background: CornflowerBlue;
 		    height: 100vh;
@@ -53,6 +67,10 @@
 <body>
 	<h1>PONG</h1>
     <canvas id="pong" width="800" height="400"></canvas>
+	<div class="leaderboard">
+    	<h2>Leaderboard</h2>
+    	<ol id="scores-list"></ol>
+	</div>
     <script>
         const canvas = document.getElementById('pong');
         const context = canvas.getContext('2d');
@@ -72,8 +90,34 @@
 		let aiScore = 0;
 		let botCollisions = 0;
 		const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+		const LEADERBOARD_API_URL = "https://script.google.com/macros/s/AKfycbwN5TvCpiqB0vVYupvOd9BFlOqADAAsZgoxmvyhV1djl45jv5s8vKkD38raXsyp5Hqe/exec";
+		let leaderboard = [];
 		
-
+		async function updateLeaderboard() {
+		    try {
+		        const response = await fetch(LEADERBOARD_API_URL);
+		        leaderboard = await response.json();
+		        
+		        const scoresList = document.getElementById('scores-list');
+		        scoresList.innerHTML = leaderboard
+		            .map((entry, index) => `<li>${entry[0]}: ${entry[1]}</li>`)
+		            .join('');
+		    } catch (error) {
+		        console.error("Error fetching leaderboard:", error);
+		    }
+		}
+		
+		async function saveScore(name, score) {
+		    try {
+		        await fetch(LEADERBOARD_API_URL, {
+		            method: "POST",
+		            body: JSON.stringify({ name, score })
+		        });
+		        await updateLeaderboard();
+		    } catch (error) {
+		        console.error("Error saving score:", error);
+		    }
+		}
         function draw() {
             context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -171,6 +215,14 @@
 				if (plScore == 10) {
 					console.log(("\n\nYOU WIN!\n\nFINAL SCORE: " + aiScore + ":" + plScore))
 				}
+				if (plScore == 10) {
+				    const name = prompt("You Win! Enter your name for the leaderboard:");
+				    if (name) {
+				        await saveScore(name, plScore);
+				    }
+				    plScore = 0;
+				    aiScore = 0;
+				}
 			}
 			if ((ballX+ballRadius)>(830)) {
 				aiScore = aiScore + 1;
@@ -184,6 +236,14 @@
 				botCollisions = 0;
 				if (aiScore == 10) {
 					console.log(("\n\nYOU LOSE!\n\nFINAL SCORE: " + aiScore + ":" + plScore))
+				}
+				if (aiScore == 10) {
+				    const name = prompt("Game Over! Enter your name for the leaderboard:");
+				    if (name) {
+				        await saveScore(name, plScore);
+				    }
+				    plScore = 0;
+				    aiScore = 0;
 				}
 			}
 			
@@ -238,6 +298,7 @@
         }
 
         // Start the game
+		updateLeaderboard();
         gameLoop();
     </script>
 </body>
