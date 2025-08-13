@@ -11,69 +11,46 @@
     <title>Pong Game</title>
     <style>
         @font-face {
-          font-family: 'bebas';
-          font-style: normal;
-          font-weight: 400;
-          src: url('fonts/bebas.woff') format('woff');
+            font-family: 'Header';
+            src: url('fonts/Franchise.woff') format('woff');
         }
         
-        /* Reset and Base Styles */
         html, body {
             overflow: hidden;
-            height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'bebas', sans-serif;
+            height: 100%;
         }
         
-        /* Navbar Styles */
-        .navbar {
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .navbar a, .navbar .mainlinks {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 0 5px;
-        }
-        
-        /* Main Content Container */
-        .main-container {
+        /* Game container */
+        .pong-container {
             display: flex;
             flex-direction: row;
-            height: calc(100vh - 50px); /* Account for navbar */
-            margin-top: 50px; /* Space for fixed navbar */
-            width: 100%;
+            height: calc(100vh - 60px); /* Account for navbar height */
+            margin-top: 60px; /* Match navbar height */
         }
         
-        /* Game Area */
+        /* Game area */
         .game-area {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            background: rgb(119, 73, 148);
         }
         
         #titlepong {
             font-family: 'Header', sans-serif;
-            font-size: 5vw;
+            font-size: 80px;
             margin: 10px 0;
+            color: white;
         }
         
         #pong {
             background: white;
-            width: 70vmin;
-            height: 35vmin;
+            width: 800px;
+            height: 400px;
         }
         
         /* Leaderboard */
@@ -85,56 +62,57 @@
             overflow-y: auto;
             box-shadow: -5px 0 10px rgba(0,0,0,0.1);
         }
-        @font-face {
-            font-family: 'Header';
-            src: url('fonts/Franchise.woff') format('woff');
+        
+        .leaderboard h2 {
+            font-family: 'bebas', sans-serif;
+            font-size: 32px;
+            margin-top: 0;
+            text-align: center;
         }
-        @font-face {
-            font-family: 'Links';
-            src: url('fonts/Franchise.woff') format('woff');
-        }
-        @font-face {
-            font-family: 'Score';
-            src: url('fonts/Franchise.woff') format('woff');
+        
+        .leaderboard ol {
+            padding-left: 20px;
+            font-size: 24px;
+            font-family: 'bebas', sans-serif;
         }
     </style>
 </head>
 <body>
     <div class='navbar'>
-			<a href='index.html' id="home" class='dropbutton'>Home</a>
-			<div class='mainlinks'>
-				<a class='dropbutton'>BasketBall</a>
-				<div class='content'>
-					<a href='basketball.html' class='link'>Main</a>
-					<a href='basketball.html' class='link'>Roster</a>
-					<a href='basketball.html' class='link'>Record</a>
-				</div>
-			</div>
-			<div class='mainlinks'>
-				<a class='dropbutton'>Football</a>
-				<div>
-					<div class='content'>
-						<a href='football.html' class='link'>Main</a>
-						<a href='football.html' class='link'>Roster</a>
-						<a href='football.html' class='link'>Record</a>
-					</div>
-				</div>
-			</div>
-			<div class='mainlinks'>
-				<a class='dropbutton'>Volleyball</a>
-				<div>
-					<div class='content'>
-						<a href='volleyball.html' class='link'>Main</a>
-						<a href='volleyball.html' class='link'>Roster</a>
-						<a href='volleyball.html' class='link'>Record</a>
-					</div>
-				</div>
-			</div>
-			<a href='photos.html' class='dropbutton'>Photos</a>
-			<a href='calendar.html' class='dropbutton'>Calendar</a>
-			<a href='pongpong.html' class='dropbutton'>Pong</a>
-	</div>
-    <div class="main-container">
+        <a href='index.html' id="home" class='dropbutton'>Home</a>
+        <div class='mainlinks'>
+            <a class='dropbutton'>BasketBall</a>
+            <div class='content'>
+                <a href='basketball.html' class='link'>Main</a>
+                <a href='basketball.html' class='link'>Roster</a>
+                <a href='basketball.html' class='link'>Record</a>
+            </div>
+        </div>
+        <div class='mainlinks'>
+            <a class='dropbutton'>Football</a>
+            <div>
+                <div class='content'>
+                    <a href='football.html' class='link'>Main</a>
+                    <a href='football.html' class='link'>Roster</a>
+                    <a href='football.html' class='link'>Record</a>
+                </div>
+            </div>
+        </div>
+        <div class='mainlinks'>
+            <a class='dropbutton'>Volleyball</a>
+            <div>
+                <div class='content'>
+                    <a href='volleyball.html' class='link'>Main</a>
+                    <a href='volleyball.html' class='link'>Roster</a>
+                    <a href='volleyball.html' class='link'>Record</a>
+                </div>
+            </div>
+        </div>
+        <a href='photos.html' class='dropbutton'>Photos</a>
+        <a href='calendar.html' class='dropbutton'>Calendar</a>
+        <a href='pongpong.html' class='dropbutton'>Pong</a>
+    </div>
+    <div class="pong-container">
         <div class="game-area">
             <h1 id="titlepong">PONG</h1>
             <canvas id="pong" width="800" height="400"></canvas>
