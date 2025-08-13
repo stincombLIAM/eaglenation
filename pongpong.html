@@ -17,72 +17,73 @@
           src: url('fonts/bebas.woff') format('woff');
         }
         
-        /* Add this to your existing body styles 
-        
-        /* Replace your existing .leaderboard styles */
-        .leaderboard {
-            background: white;
-            padding: 20px;
-            margin-left: 30px; /* Space between canvas and leaderboard */
-            width: 250px;
-            font-family: 'bebas', sans-serif;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 0; /* Remove rounded corners */
-        }
-        
-        .leaderboard h2 {
-            font-size: 32px;
-            margin-top: 0;
-            text-align: center;
-        }
-        
-        .leaderboard ol {
-            padding-left: 20px;
-            font-size: 24px;
-        }
-        
-        /* Add this to keep your canvas properly aligned */
-        #pong {
-            margin-bottom: 0; /* Remove the bottom margin */
-            margin-right: 0; /* Ensure no right margin */
-        }
-        html {
+        /* Reset and Base Styles */
+        html, body {
             overflow: hidden;
-        }
-        body {
-            background: rgb(119, 73, 148);
-            height: 100vh;
+            height: 100%;
             margin: 0;
+            padding: 0;
+            font-family: 'bebas', sans-serif;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar a, .navbar .mainlinks {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+        }
+        
+        /* Main Content Container */
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            height: calc(100vh - 50px); /* Account for navbar */
+            margin-top: 50px; /* Space for fixed navbar */
+            width: 100%;
+        }
+        
+        /* Game Area */
+        .game-area {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            flex-direction: row; /* Change from column to row */
-            align-items: flex-start; /* Align items to top */
-            padding-top: 50px; /* Add some top padding */
-            overflow: hidden;
+            justify-content: center;
+            padding: 20px;
         }
         
         #titlepong {
             font-family: 'Header', sans-serif;
-            font-size: 100px;
-            margin: 0;
-            text-align: center;
-        }
-        a    {
-            font-family: 'Header', sans-serif;
-            font-size: 30px;
-            margin: 0;
-            color: black;
+            font-size: 5vw;
+            margin: 10px 0;
         }
         
         #pong {
             background: white;
-            max-width: 100%;
-            max-height: 70vh;
-            width: 800px;
-            height: auto;
-            margin-bottom: 50px;
+            width: 70vmin;
+            height: 35vmin;
+        }
+        
+        /* Leaderboard */
+        .leaderboard {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
         }
         @font-face {
             font-family: 'Header';
@@ -100,46 +101,48 @@
 </head>
 <body>
     <div class='navbar'>
-				<a href='index.html' id="home" class='dropbutton'>Home</a>
-				<div class='mainlinks'>
-					<a class='dropbutton'>BasketBall</a>
-					<div class='content'>
-						<a href='basketball.html' class='link'>Main</a>
-						<a href='basketball.html' class='link'>Roster</a>
-						<a href='basketball.html' class='link'>Record</a>
-					</div>
+			<a href='index.html' id="home" class='dropbutton'>Home</a>
+			<div class='mainlinks'>
+				<a class='dropbutton'>BasketBall</a>
+				<div class='content'>
+					<a href='basketball.html' class='link'>Main</a>
+					<a href='basketball.html' class='link'>Roster</a>
+					<a href='basketball.html' class='link'>Record</a>
 				</div>
-				<div class='mainlinks'>
-					<a class='dropbutton'>Football</a>
-					<div>
-						<div class='content'>
-							<a href='football.html' class='link'>Main</a>
-							<a href='football.html' class='link'>Roster</a>
-							<a href='football.html' class='link'>Record</a>
-						</div>
-					</div>
-				</div>
-				<div class='mainlinks'>
-					<a class='dropbutton'>Volleyball</a>
-					<div>
-						<div class='content'>
-							<a href='volleyball.html' class='link'>Main</a>
-							<a href='volleyball.html' class='link'>Roster</a>
-							<a href='volleyball.html' class='link'>Record</a>
-						</div>
-					</div>
-				</div>
-				<a href='photos.html' class='dropbutton'>Photos</a>
-				<a href='calendar.html' class='dropbutton'>Calendar</a>
-				<a href='pongpong.html' class='dropbutton'>Pong</a>
 			</div>
-    <div class="game-area">
-        <h1 id="titlepong">PONG</h1>
-        <canvas id="pong" width="800" height="400"></canvas>
-    </div>
-    <div class="leaderboard">    
-        <h2>LEADERBOARD</h2>
-        <ol id="scores-list"></ol>
+			<div class='mainlinks'>
+				<a class='dropbutton'>Football</a>
+				<div>
+					<div class='content'>
+						<a href='football.html' class='link'>Main</a>
+						<a href='football.html' class='link'>Roster</a>
+						<a href='football.html' class='link'>Record</a>
+					</div>
+				</div>
+			</div>
+			<div class='mainlinks'>
+				<a class='dropbutton'>Volleyball</a>
+				<div>
+					<div class='content'>
+						<a href='volleyball.html' class='link'>Main</a>
+						<a href='volleyball.html' class='link'>Roster</a>
+						<a href='volleyball.html' class='link'>Record</a>
+					</div>
+				</div>
+			</div>
+			<a href='photos.html' class='dropbutton'>Photos</a>
+			<a href='calendar.html' class='dropbutton'>Calendar</a>
+			<a href='pongpong.html' class='dropbutton'>Pong</a>
+	</div>
+    <div class="main-container">
+        <div class="game-area">
+            <h1 id="titlepong">PONG</h1>
+            <canvas id="pong" width="800" height="400"></canvas>
+        </div>
+        <div class="leaderboard">    
+            <h2>LEADERBOARD</h2>
+            <ol id="scores-list"></ol>
+        </div>
     </div>
     <script>
         const canvas = document.getElementById('pong');
